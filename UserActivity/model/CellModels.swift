@@ -1,3 +1,6 @@
 enum Cells {
-    case Header, Spacing, Main, ReachGoal
+    case header
+    case spacing
+    case main(TableCell)
+    case reachGoal
 }
