@@ -6,7 +6,7 @@ struct JSONData: Decodable {
     let walk: Int
 }
 
-extension ViewController {
+extension MainViewController {
     func getJSONfromURL() {
         let getURL = URL(string: urlStorage)!
         var getRequest = URLRequest(url: getURL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30.0)
