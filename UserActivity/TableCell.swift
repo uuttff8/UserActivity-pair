@@ -85,27 +85,29 @@ class TableCell: UITableViewCell {
         self.addSubview(totalStepsCounterView)
         
         // Constraints
+        
         // Date
         dayDateView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil)
+        
         // Walk
         walkCounterView.anchor(top: nil, leading: nil, bottom: walkLabelView.topAnchor, trailing: nil)
         walkLabelView.anchor(top: nil, leading: nil, bottom: self.bottomAnchor, trailing: nil)
 //        walkLabelView.centerXAnchor.constraint(equalTo: stepsCounterView.centerXAnchor).isActive = true
+        
         // Aerobic
         aerobicLabelView.anchor(top: nil, leading: nil, bottom: self.bottomAnchor, trailing: nil)
         aerobicLabelView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         aerobicCounterView.anchor(top: nil, leading: nil, bottom: aerobicLabelView.topAnchor, trailing: nil)
         aerobicCounterView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        
         // Run
         runLabelView.anchor(top: nil, leading: nil, bottom: self.bottomAnchor, trailing: self.trailingAnchor)
         runCounterView.anchor(top: nil, leading: nil, bottom: runLabelView.topAnchor, trailing: self.trailingAnchor)
+        
         // Total steps
         targetStepsLabelView.anchor(top: self.topAnchor, leading: nil, bottom: nil, trailing: self.trailingAnchor)
         targetStepsCounterView.anchor(top: targetStepsLabelView.topAnchor, leading: nil, bottom: nil, trailing: targetStepsLabelView.leadingAnchor)
         totalStepsCounterView.anchor(top: targetStepsLabelView.topAnchor, leading: nil, bottom: nil, trailing: targetStepsCounterView.leadingAnchor)
-        
-        
-        
     }
     
     override func layoutSubviews() {

@@ -1,10 +1,4 @@
 import Foundation
-struct JSONData: Decodable {
-    let aerobic: Int
-    let date: Int
-    let run: Int
-    let walk: Int
-}
 
 extension MainViewController {
     func getJSONfromURL() {
@@ -13,7 +7,12 @@ extension MainViewController {
         getRequest.httpMethod = "GET"
         getRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         getRequest.setValue("application/json", forHTTPHeaderField: "Accept")
-        URLSession.shared.dataTask(with: getRequest, completionHandler: { (data, response, error) -> Void in
+        handleJsonData(getRequest)
+
+    }
+    
+    func handleJsonData(_ Request: URLRequest) {
+        URLSession.shared.dataTask(with: Request, completionHandler: { (data, response, error) -> Void in
             if error != nil { print("GET Request: Communication error: \(error!)") }
             if data != nil {
                 do {
@@ -33,6 +32,7 @@ extension MainViewController {
             
         }).resume()
     }
+    
     func parseJSON(data: Data){
         do {
             let decoder = JSONDecoder()

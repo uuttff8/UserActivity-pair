@@ -6,13 +6,15 @@ class MainViewController: UIViewController {
         return table
     }()
     var cellData = [DayStatistic]()
-    let urlStorage = "https://intern-f6251.firebaseio.com/intern/metric.json"
+    let urlStorage = API_MAIN_URL
     var jsonData = [JSONData]()
     
+    // Stored Properties
     let leftBarButtonItem: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(image: UIImage(named: "icon_aim")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: nil)
         return barButtonItem
     }()
+    
     let rightBarButtonItem: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(image: UIImage(named: "icon_plus")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: nil)
         return barButtonItem
