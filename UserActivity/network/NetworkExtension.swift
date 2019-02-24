@@ -39,12 +39,29 @@ extension MainViewController {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             self.jsonData = try decoder.decode([JSONData].self, from: data)
             for i in self.jsonData {
-                let result = DayStatistic.init(dayDate: String(i.date), stepsCounter: 1, stepsTarget: 1, walkSteps: i.walk, aerobicSteps: i.aerobic, runSteps: i.run)
+                // stepsTarget забирать из UserDefaults
+                let result = DayStatistic.init(dayDate: decodeDateTime(date: i.date), stepsCounter: i.walk + i.aerobic + i.run, stepsTarget: 1, walkSteps: i.walk, aerobicSteps: i.aerobic, runSteps: i.run)
                 self.cellData.append(result)
             }
             self.tableViewSetup()
         } catch let error {
             print(error)
         }
+    }
+    func decodeDateTime(date: Int) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.setLocalizedDateFormatFromTemplate("dd.MM.yyyy")
+        let dateTime = Date(milliseconds: date)
+        return dateFormatter.string(from: dateTime)
+    }
+}
+extension Date {
+    var millisecondsSince1970:Int64 {
+        return Int64((self.timeIntervalSince1970 * 1000.0).rounded())
+        //RESOLVED CRASH HERE
+    }
+    init(milliseconds:Int) {
+        self = Date(timeIntervalSince1970: TimeInterval(milliseconds / 1000))
     }
 }
