@@ -41,13 +41,6 @@ class MainViewController: UIViewController {
         view.addSubview(myTableView)
         view.addSubview(buttonView)
     }
-    
-<<<<<<< HEAD
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-    }
-=======
->>>>>>> 338ab21cee506c4c8b24e3a356018e3e233f042e
 }
 
 extension MainViewController {
@@ -116,6 +109,13 @@ extension MainViewController {
         //myTableView.centerYAnchor.constraint(equalTo:        view.centerYAnchor, constant: 0.0).isActive = true
         
         //myTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        if (myTableView.contentSize.height < myTableView.frame.size.height) {
+            myTableView.isScrollEnabled = false
+        }
+        else {
+            myTableView.isScrollEnabled = true
+        }
         
         
         myTableView.backgroundColor = .red
