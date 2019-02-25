@@ -97,6 +97,6 @@ extension MainViewController {
 
         
         
-        myTableView.backgroundColor = .red
+        myTableView.backgroundColor = .lightGray
     }
 }
