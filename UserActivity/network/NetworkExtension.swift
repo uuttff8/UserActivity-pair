@@ -40,7 +40,7 @@ extension MainViewController {
             self.jsonData = try decoder.decode([JSONData].self, from: data)
             for i in self.jsonData {
                 // stepsTarget забирать из UserDefaults
-                let result = DayStatistic.init(dayDate: decodeDateTime(date: i.date), stepsCounter: i.walk + i.aerobic + i.run, stepsTarget: 1, walkSteps: i.walk, aerobicSteps: i.aerobic, runSteps: i.run)
+                let result = DayStatistic.init(dayDate: decodeDateTime(date: i.date), stepsCounter: i.walk + i.aerobic + i.run, stepsTarget: Defaults.targetSteps, walkSteps: i.walk, aerobicSteps: i.aerobic, runSteps: i.run)
                 self.cellData.append(result)
             }
             self.tableViewSetup()
@@ -65,3 +65,4 @@ extension Date {
         self = Date(timeIntervalSince1970: TimeInterval(milliseconds / 1000))
     }
 }
+

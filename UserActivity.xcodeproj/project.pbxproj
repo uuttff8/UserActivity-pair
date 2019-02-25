@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		4E1411312222AE0600618B57 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1411302222AE0600618B57 /* Constants.swift */; };
 		4E1411342222AF3900618B57 /* JSONData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1411332222AF3900618B57 /* JSONData.swift */; };
+		FD2BA6B122230EAD00E9A69B /* TargetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2BA6B022230EAD00E9A69B /* TargetAlert.swift */; };
 		FD495B73222053BD00E08B38 /* NetworkExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD495B72222053BD00E08B38 /* NetworkExtension.swift */; };
+		FD62768D2224147600ED8A12 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD62768C2224147600ED8A12 /* Defaults.swift */; };
 		FD857590221D9B6A00E52A8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD85758F221D9B6A00E52A8D /* AppDelegate.swift */; };
 		FD857597221D9B6B00E52A8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD857596221D9B6B00E52A8D /* Assets.xcassets */; };
 		FD85759A221D9B6B00E52A8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD857598221D9B6B00E52A8D /* LaunchScreen.storyboard */; };
@@ -25,7 +27,9 @@
 /* Begin PBXFileReference section */
 		4E1411302222AE0600618B57 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4E1411332222AF3900618B57 /* JSONData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONData.swift; sourceTree = "<group>"; };
+		FD2BA6B022230EAD00E9A69B /* TargetAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetAlert.swift; sourceTree = "<group>"; };
 		FD495B72222053BD00E08B38 /* NetworkExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkExtension.swift; sourceTree = "<group>"; };
+		FD62768C2224147600ED8A12 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		FD85758C221D9B6A00E52A8D /* UserActivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserActivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD85758F221D9B6A00E52A8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD857596221D9B6B00E52A8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,6 +60,7 @@
 			children = (
 				4E1411332222AF3900618B57 /* JSONData.swift */,
 				FDB6C3842222BFBF00848515 /* CellModels.swift */,
+				FDD71EF1221DC81E00E4A359 /* DayStatistic.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -91,12 +96,12 @@
 				4E1411322222AF2B00618B57 /* model */,
 				4E1411352222AF5500618B57 /* network */,
 				FD85758F221D9B6A00E52A8D /* AppDelegate.swift */,
-				FDD71EF1221DC81E00E4A359 /* DayStatistic.swift */,
 				FD857596221D9B6B00E52A8D /* Assets.xcassets */,
 				FD857598221D9B6B00E52A8D /* LaunchScreen.storyboard */,
 				FD85759B221D9B6B00E52A8D /* Info.plist */,
 				FDD71EF9221DD0D500E4A359 /* ViewController.swift */,
 				4E1411302222AE0600618B57 /* Constants.swift */,
+				FD62768C2224147600ED8A12 /* Defaults.swift */,
 			);
 			path = UserActivity;
 			sourceTree = "<group>";
@@ -108,6 +113,7 @@
 				FDB6C3872222C62400848515 /* HeaderCell.swift */,
 				FDB6C3892222C64A00848515 /* SpacingCell.swift */,
 				FDB6C38B2222C65700848515 /* GoalCell.swift */,
+				FD2BA6B022230EAD00E9A69B /* TargetAlert.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -183,12 +189,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDD71EFA221DD0D500E4A359 /* ViewController.swift in Sources */,
+				FD62768D2224147600ED8A12 /* Defaults.swift in Sources */,
 				FDB6C38C2222C65700848515 /* GoalCell.swift in Sources */,
 				FD495B73222053BD00E08B38 /* NetworkExtension.swift in Sources */,
 				FDD71EF2221DC81E00E4A359 /* DayStatistic.swift in Sources */,
 				FD950BC7221EAD8F0097F9CC /* TableCell.swift in Sources */,
 				FDB6C3882222C62400848515 /* HeaderCell.swift in Sources */,
 				FD857590221D9B6A00E52A8D /* AppDelegate.swift in Sources */,
+				FD2BA6B122230EAD00E9A69B /* TargetAlert.swift in Sources */,
 				4E1411342222AF3900618B57 /* JSONData.swift in Sources */,
 				4E1411312222AE0600618B57 /* Constants.swift in Sources */,
 				FDB6C3852222BFBF00848515 /* CellModels.swift in Sources */,
