@@ -99,10 +99,10 @@ extension MainViewController {
         
         myTableView.translatesAutoresizingMaskIntoConstraints = false
                                                                                                 //CYKA EBLANY,hate
-        myTableView.trailingAnchor.constraint(equalTo:       view.trailingAnchor, constant: 0.0  ).isActive = true
-        myTableView.bottomAnchor.constraint(equalTo:         view.bottomAnchor,   constant: 0.0  ).isActive = true
-        myTableView.topAnchor.constraint(equalTo:            view.topAnchor,      constant: 150.0).isActive = true
-        myTableView.leadingAnchor.constraint(equalTo:        view.leadingAnchor,  constant: 0.0  ).isActive = true
+        myTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0.0  ).isActive = true
+        myTableView.bottomAnchor.constraint(equalTo:   view.bottomAnchor,   constant: 0.0  ).isActive = true
+        myTableView.topAnchor.constraint(equalTo:      view.topAnchor,      constant: 150.0).isActive = true
+        myTableView.leadingAnchor.constraint(equalTo:  view.leadingAnchor,  constant: 0.0  ).isActive = true
         
         //myTableView.widthAnchor.constraint(equalToConstant:  view.bounds.width).isActive = true
         //myTableView.heightAnchor.constraint(equalToConstant: view.bounds.height).isActive = true
@@ -110,12 +110,9 @@ extension MainViewController {
         
         //myTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        if (myTableView.contentSize.height < myTableView.frame.size.height) {
-            myTableView.isScrollEnabled = false
-        }
-        else {
-            myTableView.isScrollEnabled = true
-        }
+        (myTableView.contentSize.height < myTableView.frame.size.height) ?
+            (myTableView.isScrollEnabled = false) : (myTableView.isScrollEnabled = true)
+
         
         
         myTableView.backgroundColor = .red
