@@ -1,8 +1,5 @@
 import UIKit
-import Foundation
 class TargetAlert: UIAlertController {
-    
-
 }
 extension MainViewController {
     @objc func alertFunction(){
