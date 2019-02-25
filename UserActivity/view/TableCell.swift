@@ -14,16 +14,21 @@ class TableCell: UITableViewCell {
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
+    var totalStepsCounterView: UILabel = {
+        var textView = UILabel()
+        textView.font = UIFont.systemFont(ofSize: 22)
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
+    }()
     var targetStepsCounterView: UILabel = {
         var textView = UILabel()
         textView.font = UIFont.systemFont(ofSize: 22)
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
-    var totalStepsCounterView: UILabel = {
+    let targetStepsLabelView: UILabel = {
         var textView = UILabel()
-        textView.font = UIFont.systemFont(ofSize: 22)
-        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.text = "steps"
         return textView
     }()
     var walkCounterView: UILabel = {
@@ -44,6 +49,17 @@ class TableCell: UITableViewCell {
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
+    var lineBarView: UIView = {
+        let view = UIView()
+        view.bounds = CGRect(x: 0, y: 0, width: 100, height: 2)
+        view.backgroundColor = UIColor.blue
+        return view
+    }()
+    let progressBarView: UIProgressView = {
+        let view = UIProgressView()
+        view.progress = 50
+        return view
+    }()
     let walkLabelView: UILabel = {
         var textView = UILabel()
         textView.text = "walk"
@@ -60,11 +76,6 @@ class TableCell: UITableViewCell {
         var textView = UILabel()
         textView.text = "run"
         textView.font = UIFont.systemFont(ofSize: 14)
-        return textView
-    }()
-    let targetStepsLabelView: UILabel = {
-        var textView = UILabel()
-        textView.text = "steps"
         return textView
     }()
     
@@ -84,6 +95,8 @@ class TableCell: UITableViewCell {
         self.addSubview(targetStepsCounterView)
         self.addSubview(totalStepsCounterView)
         
+//        self.addSubview(lineBarView)
+//        self.addSubview(progressBarView)
         // Constraints
         
         // Date
@@ -108,6 +121,11 @@ class TableCell: UITableViewCell {
         targetStepsLabelView.anchor(top: self.topAnchor, leading: nil, bottom: nil, trailing: self.trailingAnchor)
         targetStepsCounterView.anchor(top: targetStepsLabelView.topAnchor, leading: nil, bottom: nil, trailing: targetStepsLabelView.leadingAnchor)
         totalStepsCounterView.anchor(top: targetStepsLabelView.topAnchor, leading: nil, bottom: nil, trailing: targetStepsCounterView.leadingAnchor)
+        
+        // Line bar
+//        lineBarView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil)
+//        lineBarView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+//        lineBarView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     
     override func layoutSubviews() {

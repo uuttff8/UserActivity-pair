@@ -11,7 +11,7 @@ class MainViewController: UIViewController {
     
     // Stored Properties
     let leftBarButtonItem: UIBarButtonItem = {
-        let barButtonItem = UIBarButtonItem(image: UIImage(named: "icon_aim")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: nil)
+        let barButtonItem = UIBarButtonItem(image: UIImage(named: "icon_aim")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(alertFunction))
         return barButtonItem
     }()
     
@@ -20,6 +20,13 @@ class MainViewController: UIViewController {
         return barButtonItem
     }()
     
+    let buttonView: UIButton = {
+        let callAlert = UIButton(type: .roundedRect)
+        callAlert.frame = CGRect(x: 180, y: 600, width: 100, height: 100)
+        callAlert.setTitle("Button", for: .normal)
+        callAlert.addTarget(self, action: #selector(alertFunction), for: .touchDown)
+        return callAlert
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +39,9 @@ class MainViewController: UIViewController {
         // Init cell data section
         view.backgroundColor = UIColor.white
         view.addSubview(myTableView)
+        view.addSubview(buttonView)
     }
+    
 }
 
 extension MainViewController {
@@ -44,15 +53,12 @@ extension MainViewController {
         myTableView.rowHeight = 100
 //        myTableView.estimatedRowHeight = 500
         
-        
         myTableView.delegate = self
         myTableView.dataSource = self
-        
         
         // NOTE: - Registering the cell programmatically
         myTableView.register(TableCell.self, forCellReuseIdentifier: "custom")
     }
-    
 }
 
 // MARK: - Table View Delegate
