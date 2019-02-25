@@ -33,12 +33,17 @@ class MainViewController: UIViewController {
         view.backgroundColor = UIColor.white
         view.addSubview(myTableView)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+    }
 }
 
 extension MainViewController {
     
     func tableViewSetup() {
-        myTableView.frame = view.frame
+        let rectFrame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)        
+        myTableView.frame = rectFrame
         myTableView.tableFooterView = UIView()
         myTableView.rowHeight = UITableView.automaticDimension
         myTableView.rowHeight = 100
@@ -47,6 +52,9 @@ extension MainViewController {
         
         myTableView.delegate = self
         myTableView.dataSource = self
+        
+        updateLayoutNavAndTable()
+
         
         
         // NOTE: - Registering the cell programmatically
@@ -83,5 +91,26 @@ extension MainViewController: UITableViewDataSource {
         cell.stepsTarget  = cellData[indexPath.row].stepsTarget
         cell.stepsCounter = cellData[indexPath.row].stepsCounter
         return cell
+    }
+}
+
+extension MainViewController {
+    func updateLayoutNavAndTable() {
+        
+        myTableView.translatesAutoresizingMaskIntoConstraints = false
+                                                                                                //CYKA EBLANY,hate
+        myTableView.trailingAnchor.constraint(equalTo:       view.trailingAnchor, constant: 0.0  ).isActive = true
+        myTableView.bottomAnchor.constraint(equalTo:         view.bottomAnchor,   constant: 0.0  ).isActive = true
+        myTableView.topAnchor.constraint(equalTo:            view.topAnchor,      constant: 150.0).isActive = true
+        myTableView.leadingAnchor.constraint(equalTo:        view.leadingAnchor,  constant: 0.0  ).isActive = true
+        
+        //myTableView.widthAnchor.constraint(equalToConstant:  view.bounds.width).isActive = true
+        //myTableView.heightAnchor.constraint(equalToConstant: view.bounds.height).isActive = true
+        //myTableView.centerYAnchor.constraint(equalTo:        view.centerYAnchor, constant: 0.0).isActive = true
+        
+        //myTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        
+        myTableView.backgroundColor = .red
     }
 }
