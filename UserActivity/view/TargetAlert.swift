@@ -23,8 +23,7 @@ extension MainViewController {
             
             if let target = targetTextField?.text {
                 if let integer = Int(target) {
-                    UserDefaults.standard.set(integer, forKey: "target")
-                    print("Target = \(integer)")
+                    Defaults.targetSteps = integer
                 }
                 
             } else {

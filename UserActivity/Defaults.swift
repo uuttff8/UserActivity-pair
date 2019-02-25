@@ -14,7 +14,7 @@ class Defaults {
     fileprivate enum Keys: String {
         case targetSteps = "targetSteps"
     }
-    
+
     class var targetSteps: Int {
         get {
             return userDefaults[.targetSteps] ?? 0
