@@ -1,5 +1,5 @@
 import UIKit
-
+import Foundation
 class TargetAlert: UIAlertController {
     
 
@@ -24,6 +24,10 @@ extension MainViewController {
             if let target = targetTextField?.text {
                 if let integer = Int(target) {
                     Defaults.targetSteps = integer
+                    for (index, _) in self.cellData.enumerated() {
+                        self.cellData[index].stepsTarget = integer
+                    }
+                    self.myTableView.reloadData()
                 }
                 
             } else {
