@@ -103,13 +103,15 @@ class TableCell: UITableViewCell {
         dayDateView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil)
         
         // Walk
-        walkCounterView.anchor(top: nil, leading: nil, bottom: walkLabelView.topAnchor, trailing: nil)
-        walkLabelView.anchor(top: nil, leading: nil, bottom: self.bottomAnchor, trailing: nil)
+        walkCounterView.anchor(top: nil, leading: self.leadingAnchor, bottom: walkLabelView.topAnchor, trailing: nil)
+        walkLabelView.anchor(top: nil, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: nil)
 //        walkLabelView.centerXAnchor.constraint(equalTo: stepsCounterView.centerXAnchor).isActive = true
         
         // Aerobic
-        aerobicLabelView.anchor(top: nil, leading: nil, bottom: self.bottomAnchor, trailing: nil)
+          // Label
+        aerobicLabelView.anchor(  top: nil, leading: nil, bottom: self.bottomAnchor, trailing: nil)
         aerobicLabelView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+          // Counter
         aerobicCounterView.anchor(top: nil, leading: nil, bottom: aerobicLabelView.topAnchor, trailing: nil)
         aerobicCounterView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
@@ -157,20 +159,20 @@ class TableCell: UITableViewCell {
 }
 
 extension UIView {
-    func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero) {
+    func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: CGFloat = 20.0) {
         translatesAutoresizingMaskIntoConstraints = false
         
         if let top = top {
-            topAnchor.constraint(equalTo: top, constant: padding.top).isActive = true
+            topAnchor.constraint(equalTo: top, constant: 0).isActive = true
         }
         if let leading = leading {
-            leadingAnchor.constraint(equalTo: leading, constant: padding.left).isActive = true
+            leadingAnchor.constraint(equalTo: leading, constant: padding).isActive = true
         }
         if let bottom = bottom {
-            bottomAnchor.constraint(equalTo: bottom, constant: padding.bottom).isActive = true
+            bottomAnchor.constraint(equalTo: bottom, constant: 0).isActive = true
         }
         if let trailing = trailing {
-            trailingAnchor.constraint(equalTo: trailing, constant: padding.right).isActive = true
+            trailingAnchor.constraint(equalTo: trailing, constant: -padding).isActive = true
         }
     }
 }
