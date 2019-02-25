@@ -2,8 +2,7 @@ import UIKit
 class TargetAlert: UIAlertController {
 }
 extension MainViewController {
-    @objc func alertFunction(){
-        print(Defaults.targetSteps)
+    @objc func alertFunction() {
         // 1.
         var targetTextField: UITextField?
         

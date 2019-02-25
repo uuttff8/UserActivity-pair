@@ -9,28 +9,11 @@ class MainViewController: UIViewController {
     let urlStorage = API_MAIN_URL
     var jsonData = [JSONData]()
     
-    // Stored Properties
-    let leftBarButtonItem: UIBarButtonItem = {
-        let barButtonItem = UIBarButtonItem(image: UIImage(named: "icon_aim")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(alertFunction))
-        return barButtonItem
-    }()
-    
-    let rightBarButtonItem: UIBarButtonItem = {
-        let barButtonItem = UIBarButtonItem(image: UIImage(named: "icon_plus")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: nil)
-        return barButtonItem
-    }()
-    
-    let buttonView: UIButton = {
-        let callAlert = UIButton(type: .roundedRect)
-        callAlert.frame = CGRect(x: 180, y: 600, width: 100, height: 100)
-        callAlert.setTitle("Button", for: .normal)
-        callAlert.addTarget(self, action: #selector(alertFunction), for: .touchDown)
-        return callAlert
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Navbar section
+        let leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_aim")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(alertFunction))
+        let rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_plus")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: nil)
         title = "Steps"
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
@@ -39,7 +22,6 @@ class MainViewController: UIViewController {
         // Init cell data section
         view.backgroundColor = UIColor.white
         view.addSubview(myTableView)
-        view.addSubview(buttonView)
     }
 }
 
