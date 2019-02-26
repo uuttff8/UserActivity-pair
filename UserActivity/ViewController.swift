@@ -33,7 +33,7 @@ extension MainViewController {
         myTableView.frame = rectFrame
         myTableView.tableFooterView = UIView()
         myTableView.rowHeight = UITableView.automaticDimension
-        myTableView.rowHeight = 100
+        myTableView.rowHeight = 150
 //        myTableView.estimatedRowHeight = 500
         
         myTableView.delegate = self
@@ -65,7 +65,6 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = self.myTableView.dequeueReusableCell(withIdentifier: "custom") as! TableCell
-        cell.textLabel?.numberOfLines = 0
         cell.walkSteps    = cellData[indexPath.row].walkSteps
         cell.dayDate      = cellData[indexPath.row].dayDate
         cell.stepsCounter = cellData[indexPath.row].stepsCounter
@@ -73,12 +72,12 @@ extension MainViewController: UITableViewDataSource {
         cell.runSteps     = cellData[indexPath.row].runSteps
         cell.stepsTarget  = cellData[indexPath.row].stepsTarget
         cell.stepsCounter = cellData[indexPath.row].stepsCounter
-        let innerView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: myTableView.bounds.width, height: 70))
-//        innerView.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.0)
-        innerView.backgroundColor = UIColor(red: 0.90, green: 0.90, blue: 0.90, alpha: 1.0)
-        innerView.layer.masksToBounds = true
-        cell.contentView.addSubview(innerView)
-        cell.contentView.sendSubviewToBack(innerView)
+//        let innerView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: myTableView.bounds.width, height: 70))
+////        innerView.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.0)
+//        innerView.backgroundColor = UIColor(red: 0.90, green: 0.90, blue: 0.90, alpha: 1.0)
+//        innerView.layer.masksToBounds = true
+//        cell.contentView.addSubview(innerView)
+//        cell.contentView.sendSubviewToBack(innerView)
         return cell
     }
 }
@@ -100,8 +99,9 @@ extension MainViewController {
         
         //myTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        (myTableView.contentSize.height < myTableView.frame.size.height) ?
+        (myTableView.contentSize.height > myTableView.frame.size.height) ?
             (myTableView.isScrollEnabled = false) : (myTableView.isScrollEnabled = true)
+        
 
     }
 }

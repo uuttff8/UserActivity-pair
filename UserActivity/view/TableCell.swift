@@ -82,42 +82,51 @@ class TableCell: UITableViewCell {
     // Actual
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.addSubview(dayDateView)
-        self.addSubview(walkCounterView)
-        self.addSubview(aerobicCounterView)
-        self.addSubview(runCounterView)
+        let innerView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 70))
+        //        innerView.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.0)
+        innerView.backgroundColor = UIColor(red: 0.90, green: 0.90, blue: 0.90, alpha: 1.0)
+        innerView.layer.masksToBounds = true
+        self.contentView.addSubview(innerView)
+        self.contentView.sendSubviewToBack(innerView)
         
-        self.addSubview(walkLabelView)
-        self.addSubview(aerobicLabelView)
-        self.addSubview(runLabelView)
+        self.contentView.addSubview(dayDateView)
+        self.contentView.addSubview(walkCounterView)
+        self.contentView.addSubview(aerobicCounterView)
+        self.contentView.addSubview(runCounterView)
+        
+        self.contentView.addSubview(walkLabelView)
+        self.contentView.addSubview(aerobicLabelView)
+//        self.addSubview(runLabelView)
         
         self.addSubview(targetStepsLabelView)
-        self.addSubview(targetStepsCounterView)
-        self.addSubview(totalStepsCounterView)
+        self.contentView.addSubview(targetStepsCounterView)
+        self.contentView.addSubview(totalStepsCounterView)
+        
+        self.contentView.addSubview(runLabelView)
         
 //        self.addSubview(lineBarView)
 //        self.addSubview(progressBarView)
         // Constraints
         
         // Date
-        dayDateView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil)
+        dayDateView.anchor(top: contentView.topAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: nil)
         
         // Walk
-        walkCounterView.anchor(top: nil, leading: self.leadingAnchor, bottom: walkLabelView.topAnchor, trailing: nil)
-        walkLabelView.anchor(top: nil, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: nil)
+        walkCounterView.anchor(top: nil, leading: innerView.leadingAnchor, bottom: walkLabelView.topAnchor, trailing: nil)
+        walkLabelView.anchor(top: nil, leading: innerView.leadingAnchor, bottom: innerView.bottomAnchor, trailing: nil)
 //        walkLabelView.centerXAnchor.constraint(equalTo: stepsCounterView.centerXAnchor).isActive = true
         
         // Aerobic
           // Label
-        aerobicLabelView.anchor(  top: nil, leading: nil, bottom: self.bottomAnchor, trailing: nil)
-        aerobicLabelView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        aerobicLabelView.anchor(  top: nil, leading: nil, bottom: innerView.bottomAnchor, trailing: nil)
+        aerobicLabelView.centerXAnchor.constraint(equalTo: innerView.centerXAnchor).isActive = true
           // Counter
         aerobicCounterView.anchor(top: nil, leading: nil, bottom: aerobicLabelView.topAnchor, trailing: nil)
-        aerobicCounterView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        aerobicCounterView.centerXAnchor.constraint(equalTo: innerView.centerXAnchor).isActive = true
         
         // Run
-        runLabelView.anchor(top: nil, leading: nil, bottom: self.bottomAnchor, trailing: self.trailingAnchor)
-        runCounterView.anchor(top: nil, leading: nil, bottom: runLabelView.topAnchor, trailing: self.trailingAnchor)
+        runLabelView.anchor(top: nil, leading: nil, bottom: innerView.bottomAnchor, trailing: innerView.trailingAnchor)
+        runCounterView.anchor(top: nil, leading: nil, bottom: runLabelView.topAnchor, trailing: innerView.trailingAnchor)
         
         // Total steps
         targetStepsLabelView.anchor(top: self.topAnchor, leading: nil, bottom: nil, trailing: self.trailingAnchor)
