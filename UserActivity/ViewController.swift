@@ -22,6 +22,7 @@ class MainViewController: UIViewController {
         // Init cell data section
         view.backgroundColor = UIColor.white
         view.addSubview(myTableView)
+        self.myTableView.backgroundColor = .clear
     }
 }
 
@@ -72,12 +73,19 @@ extension MainViewController: UITableViewDataSource {
         cell.runSteps     = cellData[indexPath.row].runSteps
         cell.stepsTarget  = cellData[indexPath.row].stepsTarget
         cell.stepsCounter = cellData[indexPath.row].stepsCounter
+        let innerView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: myTableView.bounds.width, height: 70))
+//        innerView.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.0)
+        innerView.backgroundColor = UIColor(red: 0.90, green: 0.90, blue: 0.90, alpha: 1.0)
+        innerView.layer.masksToBounds = true
+        cell.contentView.addSubview(innerView)
+        cell.contentView.sendSubviewToBack(innerView)
         return cell
     }
 }
 
 extension MainViewController {
     func updateLayoutNavAndTable() {
+        myTableView.separatorInset = UIEdgeInsets(top: 20, left: 50, bottom: 0, right: 50)
         
         myTableView.translatesAutoresizingMaskIntoConstraints = false
                                                                                                 //CYKA EBLANY,hate
@@ -95,8 +103,5 @@ extension MainViewController {
         (myTableView.contentSize.height < myTableView.frame.size.height) ?
             (myTableView.isScrollEnabled = false) : (myTableView.isScrollEnabled = true)
 
-        
-        
-        myTableView.backgroundColor = .lightGray
     }
 }
