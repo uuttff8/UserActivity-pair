@@ -33,7 +33,8 @@ extension MainViewController {
         myTableView.frame = rectFrame
         myTableView.tableFooterView = UIView()
         myTableView.rowHeight = UITableView.automaticDimension
-        myTableView.rowHeight = 150
+        myTableView.rowHeight = 100
+        myTableView.contentInset = UIEdgeInsets(top: 35, left: 0, bottom: 0, right: 0);
 //        myTableView.estimatedRowHeight = 500
         
         myTableView.delegate = self
@@ -78,6 +79,8 @@ extension MainViewController: UITableViewDataSource {
 //        innerView.layer.masksToBounds = true
 //        cell.contentView.addSubview(innerView)
 //        cell.contentView.sendSubviewToBack(innerView)
+        cell.selectionStyle = .none
+        
         return cell
     }
 }
@@ -88,10 +91,10 @@ extension MainViewController {
         
         myTableView.translatesAutoresizingMaskIntoConstraints = false
                                                                                                 //CYKA EBLANY,hate
-        myTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0.0  ).isActive = true
-        myTableView.bottomAnchor.constraint(equalTo:   view.bottomAnchor,   constant: 0.0  ).isActive = true
-        myTableView.topAnchor.constraint(equalTo:      view.topAnchor,      constant: 150.0).isActive = true
-        myTableView.leadingAnchor.constraint(equalTo:  view.leadingAnchor,  constant: 0.0  ).isActive = true
+        myTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0.0).isActive = true
+        myTableView.bottomAnchor.constraint(equalTo:   view.bottomAnchor,   constant: 0.0).isActive = true
+        myTableView.topAnchor.constraint(equalTo:      view.topAnchor,      constant: 0.0).isActive = true
+        myTableView.leadingAnchor.constraint(equalTo:  view.leadingAnchor,  constant: 0.0).isActive = true
         
         //myTableView.widthAnchor.constraint(equalToConstant:  view.bounds.width).isActive = true
         //myTableView.heightAnchor.constraint(equalToConstant: view.bounds.height).isActive = true
