@@ -33,7 +33,7 @@ extension MainViewController {
         myTableView.frame = rectFrame
         myTableView.tableFooterView = UIView()
         myTableView.rowHeight = UITableView.automaticDimension
-        myTableView.rowHeight = 100
+        myTableView.rowHeight = 110
         myTableView.contentInset = UIEdgeInsets(top: 35, left: 0, bottom: 0, right: 0);
 //        myTableView.estimatedRowHeight = 500
         

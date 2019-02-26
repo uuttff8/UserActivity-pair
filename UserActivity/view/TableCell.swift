@@ -16,13 +16,13 @@ class TableCell: UITableViewCell {
     }()
     var totalStepsCounterView: UILabel = {
         var textView = UILabel()
-        textView.font = UIFont.systemFont(ofSize: 22)
+        textView.font = UIFont.systemFont(ofSize: 19)
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
     var targetStepsCounterView: UILabel = {
         var textView = UILabel()
-        textView.font = UIFont.systemFont(ofSize: 22)
+        textView.font = UIFont.systemFont(ofSize: 19)
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
@@ -33,19 +33,19 @@ class TableCell: UITableViewCell {
     }()
     var walkCounterView: UILabel = {
         var textView = UILabel()
-        textView.font = UIFont.systemFont(ofSize: 22)
+        textView.font = UIFont.systemFont(ofSize: 19)
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
     var aerobicCounterView: UILabel = {
         var textView = UILabel()
-        textView.font = UIFont.systemFont(ofSize: 22)
+        textView.font = UIFont.systemFont(ofSize: 19)
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
     var runCounterView: UILabel = {
         var textView = UILabel()
-        textView.font = UIFont.systemFont(ofSize: 22)
+        textView.font = UIFont.systemFont(ofSize: 19)
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
@@ -82,7 +82,7 @@ class TableCell: UITableViewCell {
     // Actual
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        let innerView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 70))
+        let innerView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 90))
         // Product color below
         //        innerView.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.0)
         innerView.backgroundColor = UIColor(red: 0.90, green: 0.90, blue: 0.90, alpha: 1.0)
@@ -113,8 +113,9 @@ class TableCell: UITableViewCell {
         dayDateView.anchor(top: contentView.topAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: nil)
         
         // Walk
-        walkCounterView.anchor(top: nil, leading: innerView.leadingAnchor, bottom: walkLabelView.topAnchor, trailing: nil)
-        walkLabelView.anchor(top: nil, leading: innerView.leadingAnchor, bottom: innerView.bottomAnchor, trailing: nil)
+        walkCounterView.anchor(top: nil, leading: nil, bottom: walkLabelView.topAnchor, trailing: nil)
+        walkCounterView.centerXAnchor.constraint(equalTo: walkLabelView.centerXAnchor, constant: 0.0).isActive = true
+        walkLabelView.anchor(top: nil, leading: innerView.leadingAnchor, bottom: innerView.bottomAnchor, trailing: nil, padding: 45)
 //        walkLabelView.centerXAnchor.constraint(equalTo: stepsCounterView.centerXAnchor).isActive = true
         
         // Aerobic
@@ -126,13 +127,14 @@ class TableCell: UITableViewCell {
         aerobicCounterView.centerXAnchor.constraint(equalTo: innerView.centerXAnchor).isActive = true
         
         // Run
-        runLabelView.anchor(top: nil, leading: nil, bottom: innerView.bottomAnchor, trailing: innerView.trailingAnchor)
-        runCounterView.anchor(top: nil, leading: nil, bottom: runLabelView.topAnchor, trailing: innerView.trailingAnchor)
+        runLabelView.anchor(top: nil, leading: nil, bottom: innerView.bottomAnchor, trailing: innerView.trailingAnchor, padding: 45)
+        runCounterView.anchor(top: nil, leading: nil, bottom: runLabelView.topAnchor, trailing: nil)
+        runCounterView.centerXAnchor.constraint(equalTo: runLabelView.centerXAnchor, constant: 0.0).isActive = true
         
         // Total steps
         targetStepsLabelView.anchor(top: self.topAnchor, leading: nil, bottom: nil, trailing: self.trailingAnchor)
-        targetStepsCounterView.anchor(top: targetStepsLabelView.topAnchor, leading: nil, bottom: nil, trailing: targetStepsLabelView.leadingAnchor)
-        totalStepsCounterView.anchor(top: targetStepsLabelView.topAnchor, leading: nil, bottom: nil, trailing: targetStepsCounterView.leadingAnchor)
+        targetStepsCounterView.anchor(top: targetStepsLabelView.topAnchor, leading: nil, bottom: nil, trailing: targetStepsLabelView.leadingAnchor, padding:  0.0)
+        totalStepsCounterView.anchor(top: targetStepsLabelView.topAnchor, leading: nil, bottom: nil, trailing: targetStepsCounterView.leadingAnchor, padding: 0.0)
         
         // Line bar
 //        lineBarView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil)
