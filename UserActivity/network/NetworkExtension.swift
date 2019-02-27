@@ -34,6 +34,7 @@ extension MainViewController {
     }
     
     func parseJSON(data: Data){
+        let tableCell = TableCell()
         do {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -41,6 +42,7 @@ extension MainViewController {
             for i in self.jsonData {
                 // stepsTarget забирать из UserDefaults
                 let result = DayStatistic.init(dayDate: decodeDateTime(date: i.date), stepsCounter: i.walk + i.aerobic + i.run, stepsTarget: Defaults.targetSteps, walkSteps: i.walk, aerobicSteps: i.aerobic, runSteps: i.run)
+                tableCell.addProgressLine(walk: i.walk, run: i.run, aerobic: i.aerobic)
                 self.cellData.append(result)
             }
             self.tableViewSetup()

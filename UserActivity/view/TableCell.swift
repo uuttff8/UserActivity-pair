@@ -49,14 +49,30 @@ class TableCell: UITableViewCell {
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
-    var lineBarView: UIView = {
+    var lineBarViewWalk: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.blue
+        //view.backgroundColor = UIColor.blue
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.frame = CGRect(x: 0, y: 0, width: 10, height: 2)
+        return view
+    }()
+    
+    var lineBarViewAerobic: UIView = {
+        let view = UIView()
+        //view.backgroundColor = UIColor.blue
         view.translatesAutoresizingMaskIntoConstraints = false
         view.frame = CGRect(x: 0, y: 0, width: 10, height: 2)
         return view
     }()
    
+    var lineBarViewRun: UIView = {
+        let view = UIView()
+        //view.backgroundColor = UIColor.blue
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.frame = CGRect(x: 0, y: 0, width: 10, height: 2)
+        return view
+    }()
+    
     let walkLabelView: UILabel = {
         var textView = UILabel()
         textView.text = "walk"
@@ -101,7 +117,10 @@ class TableCell: UITableViewCell {
         self.contentView.addSubview(totalStepsCounterView)
         
         self.contentView.addSubview(runLabelView)
-        self.contentView.addSubview(lineBarView)
+        
+        self.contentView.addSubview(lineBarViewWalk)
+        self.contentView.addSubview(lineBarViewAerobic)
+        self.contentView.addSubview(lineBarViewRun)
         
 
         // Constraints        
@@ -135,10 +154,20 @@ class TableCell: UITableViewCell {
         // Line bar
 //        lineBarView.centerXAnchor.constraint(equalTo: aerobicLabelView.centerXAnchor).isActive = true
 //        lineBarView.anchor(top: dayDateView.bottomAnchor, leading: innerView.leadingAnchor, bottom: nil, trailing: innerView.trailingAnchor)
-        lineBarView.centerYAnchor.constraint(equalTo: innerView.centerYAnchor).isActive = true
-        lineBarView.leadingAnchor.constraint(equalTo: innerView.leadingAnchor, constant: 20).isActive = true
-        lineBarView.trailingAnchor.constraint(equalTo: innerView.trailingAnchor, constant: -20).isActive = true
-        lineBarView.heightAnchor.constraint(equalToConstant: 2).isActive = true
+        lineBarViewWalk.centerYAnchor.constraint(equalTo: innerView.centerYAnchor).isActive = true
+        lineBarViewWalk.leadingAnchor.constraint(equalTo: innerView.leadingAnchor, constant: 20).isActive = true
+        lineBarViewWalk.trailingAnchor.constraint(equalTo: lineBarViewAerobic.leadingAnchor, constant: -10).isActive = true
+        lineBarViewWalk.heightAnchor.constraint(equalToConstant: 2).isActive = true
+        
+        lineBarViewAerobic.centerYAnchor.constraint(equalTo: innerView.centerYAnchor).isActive = true
+        lineBarViewAerobic.leadingAnchor.constraint(equalTo: lineBarViewWalk.leadingAnchor, constant: 10).isActive = true
+        lineBarViewAerobic.trailingAnchor.constraint(equalTo: lineBarViewRun.trailingAnchor, constant: -10).isActive = true
+        lineBarViewAerobic.heightAnchor.constraint(equalToConstant: 2).isActive = true
+        
+        lineBarViewRun.centerYAnchor.constraint(equalTo: innerView.centerYAnchor).isActive = true
+        lineBarViewRun.leadingAnchor.constraint(equalTo: lineBarViewAerobic.leadingAnchor, constant: 20).isActive = true
+        lineBarViewRun.trailingAnchor.constraint(equalTo: innerView.trailingAnchor, constant: -20).isActive = true
+        lineBarViewRun.heightAnchor.constraint(equalToConstant: 2).isActive = true
 //        lineBarView.anchor(top: dayDateView.bottomAnchor, leading: innerView.leadingAnchor, bottom: walkCounterView.topAnchor, trailing: nil)
 //        lineBarView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil)
     }
@@ -201,5 +230,21 @@ extension UIView {
         border.backgroundColor = borderColor.cgColor
         border.frame = CGRect(x: 0, y: self.frame.size.height - borderHeight / 2, width: self.frame.size.width, height: borderHeight)
         self.layer.addSublayer(border)
+    }
+}
+
+
+extension TableCell {
+    func addProgressLine(walk: Int, run: Int, aerobic: Int) {
+        let totalSteps = walk + run + aerobic
+        
+        // TODO make calculate and like
+        /* walk = 75%
+           aero = 20%
+           run  = 5%      AND
+ 
+        ========================
+        ^ walk         ^ aero ^ run
+       */
     }
 }
