@@ -84,7 +84,6 @@ class TableCell: UITableViewCell {
         innerView.addBottomBorder(borderColor: UIColor(red:0.70, green:0.70, blue:0.70, alpha:1.0), borderHeight: 0.5)
         // Product color below
         innerView.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.0)
-//        innerView.backgroundColor = UIColor(red: 0.90, green: 0.90, blue: 0.90, alpha: 1.0)
         innerView.layer.masksToBounds = true
         self.contentView.addSubview(innerView)
         self.contentView.sendSubviewToBack(innerView)
@@ -200,9 +199,7 @@ extension UIView {
     func addBottomBorder(borderColor: UIColor, borderHeight: CGFloat) {
         let border = CALayer()
         border.backgroundColor = borderColor.cgColor
-//        border.frame = CGRect(x:0, y:0, width: borderWidth, height: self.frame.size.height)
-        border.frame = CGRect(x: 0, y: self.frame.size.height - borderHeight, width: self.frame.size.width, height: borderHeight)
+        border.frame = CGRect(x: 0, y: self.frame.size.height - borderHeight / 2, width: self.frame.size.width, height: borderHeight)
         self.layer.addSublayer(border)
     }
 }
-
