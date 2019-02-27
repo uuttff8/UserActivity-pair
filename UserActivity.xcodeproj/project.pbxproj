@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4E1411312222AE0600618B57 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1411302222AE0600618B57 /* Constants.swift */; };
 		4E1411342222AF3900618B57 /* JSONData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1411332222AF3900618B57 /* JSONData.swift */; };
+		FD15E1322225B42B00B09673 /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD15E1312225B42B00B09673 /* Bar.swift */; };
 		FD2BA6B122230EAD00E9A69B /* TargetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2BA6B022230EAD00E9A69B /* TargetAlert.swift */; };
 		FD495B73222053BD00E08B38 /* NetworkExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD495B72222053BD00E08B38 /* NetworkExtension.swift */; };
 		FD62768D2224147600ED8A12 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD62768C2224147600ED8A12 /* Defaults.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		4E1411302222AE0600618B57 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4E1411332222AF3900618B57 /* JSONData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONData.swift; sourceTree = "<group>"; };
+		FD15E1312225B42B00B09673 /* Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
 		FD2BA6B022230EAD00E9A69B /* TargetAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetAlert.swift; sourceTree = "<group>"; };
 		FD495B72222053BD00E08B38 /* NetworkExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkExtension.swift; sourceTree = "<group>"; };
 		FD62768C2224147600ED8A12 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				FDB6C3892222C64A00848515 /* SpacingCell.swift */,
 				FDB6C38B2222C65700848515 /* GoalCell.swift */,
 				FD2BA6B022230EAD00E9A69B /* TargetAlert.swift */,
+				FD15E1312225B42B00B09673 /* Bar.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDD71EFA221DD0D500E4A359 /* ViewController.swift in Sources */,
+				FD15E1322225B42B00B09673 /* Bar.swift in Sources */,
 				FD62768D2224147600ED8A12 /* Defaults.swift in Sources */,
 				FDB6C38C2222C65700848515 /* GoalCell.swift in Sources */,
 				FD495B73222053BD00E08B38 /* NetworkExtension.swift in Sources */,

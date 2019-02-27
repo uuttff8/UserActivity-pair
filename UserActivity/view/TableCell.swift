@@ -51,15 +51,12 @@ class TableCell: UITableViewCell {
     }()
     var lineBarView: UIView = {
         let view = UIView()
-        view.bounds = CGRect(x: 0, y: 0, width: 100, height: 2)
         view.backgroundColor = UIColor.blue
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.frame = CGRect(x: 0, y: 0, width: 10, height: 2)
         return view
     }()
-    let progressBarView: UIProgressView = {
-        let view = UIProgressView()
-        view.progress = 50
-        return view
-    }()
+   
     let walkLabelView: UILabel = {
         var textView = UILabel()
         textView.text = "walk"
@@ -83,9 +80,11 @@ class TableCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         let innerView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 90))
+        innerView.addTopBorder(borderColor: UIColor(red:0.70, green:0.70, blue:0.70, alpha:1.0), borderHeight: 0.5)
+        innerView.addBottomBorder(borderColor: UIColor(red:0.70, green:0.70, blue:0.70, alpha:1.0), borderHeight: 0.5)
         // Product color below
-        //        innerView.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.0)
-        innerView.backgroundColor = UIColor(red: 0.90, green: 0.90, blue: 0.90, alpha: 1.0)
+        innerView.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.0)
+//        innerView.backgroundColor = UIColor(red: 0.90, green: 0.90, blue: 0.90, alpha: 1.0)
         innerView.layer.masksToBounds = true
         self.contentView.addSubview(innerView)
         self.contentView.sendSubviewToBack(innerView)
@@ -97,18 +96,16 @@ class TableCell: UITableViewCell {
         
         self.contentView.addSubview(walkLabelView)
         self.contentView.addSubview(aerobicLabelView)
-//        self.addSubview(runLabelView)
         
-        self.addSubview(targetStepsLabelView)
+        self.contentView.addSubview(targetStepsLabelView)
         self.contentView.addSubview(targetStepsCounterView)
         self.contentView.addSubview(totalStepsCounterView)
         
         self.contentView.addSubview(runLabelView)
+        self.contentView.addSubview(lineBarView)
         
-//        self.addSubview(lineBarView)
-//        self.addSubview(progressBarView)
-        // Constraints
-        
+
+        // Constraints        
         // Date
         dayDateView.anchor(top: contentView.topAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: nil)
         
@@ -137,9 +134,14 @@ class TableCell: UITableViewCell {
         totalStepsCounterView.anchor(top: targetStepsLabelView.topAnchor, leading: nil, bottom: nil, trailing: targetStepsCounterView.leadingAnchor, padding: 0.0)
         
         // Line bar
+//        lineBarView.centerXAnchor.constraint(equalTo: aerobicLabelView.centerXAnchor).isActive = true
+//        lineBarView.anchor(top: dayDateView.bottomAnchor, leading: innerView.leadingAnchor, bottom: nil, trailing: innerView.trailingAnchor)
+        lineBarView.centerYAnchor.constraint(equalTo: innerView.centerYAnchor).isActive = true
+        lineBarView.leadingAnchor.constraint(equalTo: innerView.leadingAnchor, constant: 20).isActive = true
+        lineBarView.trailingAnchor.constraint(equalTo: innerView.trailingAnchor, constant: -20).isActive = true
+        lineBarView.heightAnchor.constraint(equalToConstant: 2).isActive = true
+//        lineBarView.anchor(top: dayDateView.bottomAnchor, leading: innerView.leadingAnchor, bottom: walkCounterView.topAnchor, trailing: nil)
 //        lineBarView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: nil)
-//        lineBarView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-//        lineBarView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     
     override func layoutSubviews() {
@@ -187,4 +189,20 @@ extension UIView {
             trailingAnchor.constraint(equalTo: trailing, constant: -padding).isActive = true
         }
     }
+    
+    func addTopBorder(borderColor: UIColor, borderHeight: CGFloat) {
+        let border = CALayer()
+        border.backgroundColor = borderColor.cgColor
+        border.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: borderHeight)
+        self.layer.addSublayer(border)
+    }
+    
+    func addBottomBorder(borderColor: UIColor, borderHeight: CGFloat) {
+        let border = CALayer()
+        border.backgroundColor = borderColor.cgColor
+//        border.frame = CGRect(x:0, y:0, width: borderWidth, height: self.frame.size.height)
+        border.frame = CGRect(x: 0, y: self.frame.size.height - borderHeight, width: self.frame.size.width, height: borderHeight)
+        self.layer.addSublayer(border)
+    }
 }
+
