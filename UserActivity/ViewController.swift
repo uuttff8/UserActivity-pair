@@ -6,7 +6,7 @@ class MainViewController: UIViewController {
         return table
     }()
     var cellData = [DayStatistic]()
-    let urlStorage = API_MAIN_URL
+    let urlStorage = API_SECOND_URL
     var jsonData = [JSONData]()
     
     override func viewDidLoad() {
@@ -41,7 +41,6 @@ extension MainViewController {
         myTableView.dataSource = self
         
         updateLayoutNavAndTable()
-
         // NOTE: - Registering the cell programmatically
         myTableView.register(TableCell.self, forCellReuseIdentifier: "custom")
     }
@@ -54,7 +53,6 @@ extension MainViewController: UITableViewDelegate {
 
 // MARK: - Table View Data Source
 extension MainViewController: UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
