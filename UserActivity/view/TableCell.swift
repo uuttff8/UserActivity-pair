@@ -49,24 +49,24 @@ class TableCell: UITableViewCell {
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
-    var lineBarViewWalk: UIView = {
-        let view = UIView()
+    var lineBarViewWalk: UIProgressView = {
+        let view = UIProgressView()
         //view.backgroundColor = UIColor.blue
         view.translatesAutoresizingMaskIntoConstraints = false
         view.frame = CGRect(x: 0, y: 0, width: 10, height: 2)
         return view
     }()
     
-    var lineBarViewAerobic: UIView = {
-        let view = UIView()
+    var lineBarViewAerobic: UIProgressView = {
+        let view = UIProgressView()
         //view.backgroundColor = UIColor.blue
         view.translatesAutoresizingMaskIntoConstraints = false
         view.frame = CGRect(x: 0, y: 0, width: 10, height: 2)
         return view
     }()
    
-    var lineBarViewRun: UIView = {
-        let view = UIView()
+    var lineBarViewRun: UIProgressView = {
+        let view = UIProgressView()
         //view.backgroundColor = UIColor.blue
         view.translatesAutoresizingMaskIntoConstraints = false
         view.frame = CGRect(x: 0, y: 0, width: 10, height: 2)
@@ -154,6 +154,7 @@ class TableCell: UITableViewCell {
         // Line bar
 //        lineBarView.centerXAnchor.constraint(equalTo: aerobicLabelView.centerXAnchor).isActive = true
 //        lineBarView.anchor(top: dayDateView.bottomAnchor, leading: innerView.leadingAnchor, bottom: nil, trailing: innerView.trailingAnchor)
+        // TODO: make working layout for ProgressBar
         lineBarViewWalk.centerYAnchor.constraint(equalTo: innerView.centerYAnchor).isActive = true
         lineBarViewWalk.leadingAnchor.constraint(equalTo: innerView.leadingAnchor, constant: 20).isActive = true
         lineBarViewWalk.trailingAnchor.constraint(equalTo: lineBarViewAerobic.leadingAnchor, constant: -10).isActive = true
@@ -235,8 +236,16 @@ extension UIView {
 
 
 extension TableCell {
-    func addProgressLine(walk: Int, run: Int, aerobic: Int) {
+    func addProgressLine(walk: Float, run: Float, aerobic: Float) {
         let totalSteps = walk + run + aerobic
+        
+        let divideWalk: Float = totalSteps / walk
+        let divideAero: Float = totalSteps / aerobic
+        let divideRun:  Float = totalSteps / run
+        
+        lineBarViewWalk.progress = divideWalk
+        lineBarViewRun.progress  = divideRun
+        lineBarViewAerobic.progress = divideAero
         
         // TODO make calculate and like
         /* walk = 75%
