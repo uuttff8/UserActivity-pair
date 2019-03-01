@@ -42,7 +42,7 @@ extension MainViewController {
             for i in self.jsonData {
                 // stepsTarget забирать из UserDefaults
                 let result = DayStatistic.init(dayDate: decodeDateTime(date: i.date), stepsCounter: i.walk + i.aerobic + i.run, stepsTarget: Defaults.targetSteps, walkSteps: i.walk, aerobicSteps: i.aerobic, runSteps: i.run)
-                tableCell.addProgressLine(walk: Float(i.walk), run: Float(i.run), aerobic: Float(i.aerobic))
+                tableCell.getSteps(walk: Float(i.walk), run: Float(i.run), aerobic: Float(i.aerobic))
                 self.cellData.append(result)
             }
             self.tableViewSetup()

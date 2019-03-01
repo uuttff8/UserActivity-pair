@@ -53,7 +53,7 @@ class TableCell: UITableViewCell {
         let view = UIProgressView()
         //view.backgroundColor = UIColor.blue
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.frame = CGRect(x: 0, y: 0, width: 10, height: 2)
+        view.frame = CGRect(x: 0, y: 0, width: 0, height: 2)
         return view
     }()
     
@@ -61,7 +61,7 @@ class TableCell: UITableViewCell {
         let view = UIProgressView()
         //view.backgroundColor = UIColor.blue
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.frame = CGRect(x: 0, y: 0, width: 10, height: 2)
+        view.frame = CGRect(x: 0, y: 0, width: 0, height: 2)
         return view
     }()
    
@@ -69,7 +69,7 @@ class TableCell: UITableViewCell {
         let view = UIProgressView()
         //view.backgroundColor = UIColor.blue
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.frame = CGRect(x: 0, y: 0, width: 10, height: 2)
+        view.frame = CGRect(x: 0, y: 0, width: 0, height: 2)
         return view
     }()
     
@@ -160,9 +160,9 @@ class TableCell: UITableViewCell {
         lineBarViewWalk.trailingAnchor.constraint(equalTo: lineBarViewAerobic.leadingAnchor, constant: -10).isActive = true
         lineBarViewWalk.heightAnchor.constraint(equalToConstant: 2).isActive = true
         
-        lineBarViewAerobic.centerYAnchor.constraint(equalTo: innerView.centerYAnchor).isActive = true
-        lineBarViewAerobic.leadingAnchor.constraint(equalTo: lineBarViewWalk.leadingAnchor, constant: 10).isActive = true
-        lineBarViewAerobic.trailingAnchor.constraint(equalTo: lineBarViewRun.trailingAnchor, constant: -10).isActive = true
+        lineBarViewAerobic.centerYAnchor.constraint(equalTo:  innerView.centerYAnchor).isActive = true
+        lineBarViewAerobic.leadingAnchor.constraint(equalTo:  lineBarViewWalk.trailingAnchor, constant: 10).isActive = true
+        lineBarViewAerobic.trailingAnchor.constraint(equalTo: lineBarViewRun.leadingAnchor, constant: -10).isActive = true
         lineBarViewAerobic.heightAnchor.constraint(equalToConstant: 2).isActive = true
         
         lineBarViewRun.centerYAnchor.constraint(equalTo: innerView.centerYAnchor).isActive = true
@@ -236,17 +236,33 @@ extension UIView {
 
 
 extension TableCell {
-    func addProgressLine(walk: Float, run: Float, aerobic: Float) {
+    /*func addProgressLine() {
+        
         let totalSteps = walk + run + aerobic
         
-        let divideWalk: Float = totalSteps / walk
-        let divideAero: Float = totalSteps / aerobic
-        let divideRun:  Float = totalSteps / run
+//        let divideWalk: Float = totalSteps / walk
+//        let divideAerobic: Float = totalSteps / aerobic
+//        let divideRun:  Float = totalSteps / run
+//        
+        lineBarViewWalk.progress = 1.0
+        lineBarViewRun.progress  = 1.0
+        lineBarViewAerobic.progress = 1.0
         
-        lineBarViewWalk.progress = divideWalk
-        lineBarViewRun.progress  = divideRun
-        lineBarViewAerobic.progress = divideAero
+        let procentWalk = walk * 100 / totalSteps
+        let procentRun  = run  * 100 / totalSteps
+        let procentAerobic = aerobic * 100 / totalSteps
         
+        let frameWidthWalk = CGRect(x: 0, y: 0, width: Int(procentWalk), height: 2)
+        let frameWidthRun = CGRect(x: 0, y: 0, width: Int(procentRun), height: 2)
+        let frameWidthAerobic = CGRect(x: 0, y: 0, width: Int(procentAerobic), height: 2)
+        
+        lineBarViewWalk.frame = frameWidthWalk
+        lineBarViewRun.frame  = frameWidthRun
+        lineBarViewAerobic.frame = frameWidthAerobic
+        
+        lineBarViewWalk.progressTintColor = UIColor.red
+        lineBarViewRun.progressTintColor  = UIColor.blue
+        lineBarViewAerobic.progressTintColor = UIColor.black
         // TODO make calculate and like
         /* walk = 75%
            aero = 20%
@@ -255,5 +271,9 @@ extension TableCell {
         ========================
         ^ walk         ^ aero ^ run
        */
+    }*/
+    
+    func getSteps(walk: Float, run: Float, aerobic: Float) -> (walk: Float, run: Float, aerobic: Float) {
+        return (walk: walk, run: run, aerobic: aerobic)
     }
 }
